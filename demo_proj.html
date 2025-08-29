@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Squad Site – Final Project Submission</title>
+    <style>
+      :root {
+        --bg: #f7f7fb;
+        --paper: #ffffff;
+        --ink: #0f172a;
+        --muted: #475569;
+        --brand: #4f46e5;
+        --brand-weak: #eef2ff;
+        --line: #e5e7eb;
+        --ring: #c7d2fe;
+        --radius: 16px;
+      }
+
+      html,
+      body {
+        height: 100%;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+          "Segoe UI Emoji";
+        line-height: 1.5;
+      }
+
+      .page {
+        max-width: 980px;
+        margin: 24px auto;
+        padding: 24px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: 0 10px 30px rgba(2, 6, 23, 0.05);
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 16px;
+        align-items: center;
+        padding-bottom: 16px;
+        border-bottom: 2px solid var(--line);
+      }
+
+      h1 {
+        font-size: 1.75rem;
+        margin: 0;
+        letter-spacing: 0.2px;
+      }
+
+      .badge {
+        font-size: 0.9rem;
+        color: var(--brand);
+        background: var(--brand-weak);
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--ring);
+        white-space: nowrap;
+      }
+
+      section {
+        margin-top: 22px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow: clip;
+      }
+
+      section > h2 {
+        margin: 0;
+        padding: 12px 16px;
+        font-size: 1.05rem;
+        background: linear-gradient(180deg, #fafaff, #fff);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .content {
+        padding: 16px;
+        display: grid;
+        gap: 12px;
+      }
+
+      label {
+        font-weight: 600;
+      }
+
+      .row {
+        display: grid;
+        gap: 12px;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      input[type="text"],
+      input[type="url"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+        color: var(--ink);
+        outline: none;
+        transition: box-shadow 0.15s ease, border-color 0.15s ease;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #94a3b8;
+      }
+
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: var(--brand);
+        box-shadow: 0 0 0 3px var(--ring);
+      }
+
+      .inline {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .checklist {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 18px;
+      }
+      .checklist label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        color: var(--muted);
+      }
+      input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--brand);
+      }
+
+      .muted {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .hint {
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 2px solid var(--line);
+        margin-top: 18px;
+        padding-top: 12px;
+        font-size: 0.95rem;
+      }
+
+      .print-note {
+        color: var(--muted);
+      }
+
+      @page {
+        size: A4;
+        margin: 12mm;
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        .page {
+          box-shadow: none;
+          border: none;
+          padding: 0;
+        }
+        header,
+        .footer {
+          border-color: #ddd;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .inline {
+          grid-template-columns: 1fr;
+        }
+        .grid-2,
+        .grid-3,
+        .checklist {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page" role="document">
+      <header>
+        <div>
+          <h1>🌐 Squad Site – Final Project Submission</h1>
+          <p class="muted">
+            Fill this template and submit along with your ZIP and GitHub link.
+          </p>
+        </div>
+        <div class="badge" aria-hidden="true">HTML + CSS Template</div>
+      </header>
+
+      <section>
+        <h2>👥 Team Details</h2>
+        <div class="content row">
+          <div class="inline">
+            <label for="squad">Squad Name</label>
+            <input id="squad" type="text" placeholder="e.g., Pixel Pioneers" />
+          </div>
+          <div class="row grid-2">
+            <div class="inline">
+              <label for="m1">Team Member 1</label
+              ><input id="m1" type="text" placeholder="Full name" />
+            </div>
+            <div class="inline">
+              <label for="m2">Team Member 2</label
+              ><input id="m2" type="text" placeholder="Full name" />
+            </div>
+            <div class="inline">
+              <label for="m3">Team Member 3</label
+              ><input id="m3" type="text" placeholder="Full name" />
+            </div>
+            <div class="inline">
+              <label for="m4">Team Member 4</label
+              ><input id="m4" type="text" placeholder="Full name" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Project Details</h2>
+        <div class="content row">
+          <div class="inline">
+            <label for="title">Project Title</label>
+            <input id="title" type="text" placeholder="e.g., Squad Site 1.0" />
+          </div>
+          <div class="inline">
+            <label for="repo">GitHub Repository Link</label>
+            <input
+              id="repo"
+              type="url"
+              placeholder="https://github.com/org/repo"
+            />
+          </div>
+          <div class="inline">
+            <label for="demo">Live Demo (if hosted)</label>
+            <input
+              id="demo"
+              type="url"
+              placeholder="https://your-domain.example"
+            />
+          </div>
+          <p class="hint">
+            Attach the ZIP of your final project folder separately in your
+            LMS/email as instructed.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Features Checklist</h2>
+        <div class="content">
+          <div class="checklist">
+            <label
+              ><input type="checkbox" /> All internal page links working</label
+            >
+            <label
+              ><input type="checkbox" /> “Contact Us” form present (functional /
+              styled)</label
+            >
+            <label><input type="checkbox" /> Team bios included</label>
+            <label><input type="checkbox" /> Projects showcased</label>
+            <label
+              ><input type="checkbox" /> Team mission & branding included</label
+            >
+            <label
+              ><input type="checkbox" /> Homepage polished &
+              user-friendly</label
+            >
+            <label
+              ><input type="checkbox" /> Proofread grammar and writing</label
+            >
+            <label><input type="checkbox" /> Images & links checked</label>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Design Choices</h2>
+        <div class="content row grid-3">
+          <div class="inline">
+            <label for="colors">Color Scheme</label>
+            <input
+              id="colors"
+              type="text"
+              placeholder="e.g., Indigo 600, Slate 800, White"
+            />
+          </div>
+          <div class="inline">
+            <label for="type">Typography</label>
+            <input
+              id="type"
+              type="text"
+              placeholder="e.g., Inter for UI, Playfair for headings"
+            />
+          </div>
+          <div class="inline">
+            <label for="layout">Layout Style</label>
+            <input
+              id="layout"
+              type="text"
+              placeholder="e.g., CSS Grid + Flexbox"
+            />
+          </div>
+          <div class="row" style="grid-column: 1/-1">
+            <label for="special">Special Features / Creative Touches</label>
+            <textarea
+              id="special"
+              placeholder="Animations, hover effects, custom components, accessibility touches, etc."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Collaboration</h2>
+        <div class="content row">
+          <div class="row">
+            <label for="github"
+              >How we used GitHub (commits, branches, PRs)</label
+            >
+            <textarea
+              id="github"
+              placeholder="Branch strategy, code reviews, commit frequency, merge workflow..."
+            ></textarea>
+          </div>
+          <div class="row">
+            <label for="roles">Division of Work (who did what)</label>
+            <textarea
+              id="roles"
+              placeholder="Member A: Homepage; Member B: Contact form; Member C: CSS architecture; Member D: QA & docs..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Showcase Preparation</h2>
+        <div class="content row">
+          <div class="row grid-2">
+            <div class="inline">
+              <label for="p1">Homepage presenter</label
+              ><input id="p1" type="text" placeholder="Name" />
+            </div>
+            <div class="inline">
+              <label for="p2">Team Bios presenter</label
+              ><input id="p2" type="text" placeholder="Name" />
+            </div>
+            <div class="inline">
+              <label for="p3">Projects presenter</label
+              ><input id="p3" type="text" placeholder="Name" />
+            </div>
+            <div class="inline">
+              <label for="p4">Contact Page presenter</label
+              ><input id="p4" type="text" placeholder="Name" />
+            </div>
+          </div>
+          <div class="row">
+            <label for="extras"
+              >Extras to show (animations, effects, surprises)</label
+            >
+            <textarea
+              id="extras"
+              placeholder="Parallax header, micro-interactions, dark mode toggle, responsive demos..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Reflection & Next Steps</h2>
+        <div class="content row">
+          <div class="row grid-2">
+            <div class="row">
+              <label for="challenge">Biggest Challenge Solved</label>
+              <textarea
+                id="challenge"
+                placeholder="Describe the problem and how your squad solved it."
+              ></textarea>
+            </div>
+            <div class="row">
+              <label for="proud">What we’re most proud of</label>
+              <textarea
+                id="proud"
+                placeholder="Highlight your strongest decisions and outcomes."
+              ></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <label for="future">Future improvements we’d like to add</label>
+            <textarea
+              id="future"
+              placeholder="e.g., Accessibility audit, performance budget, CMS integration, animations refactor..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Ready to Submit</h2>
+        <div class="content">
+          <p class="muted">
+            Double‑check: organized project folder, updated GitHub repo,
+            collaborators added, clear commit messages, ZIP + repo link
+            prepared.
+          </p>
+          <div class="inline">
+            <label for="date">Submission Date</label>
+            <input id="date" type="text" placeholder="DD/MM/YYYY" />
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        <span class="print-note"
+          >Tip: Use your browser’s <strong>Print</strong> → “Save as PDF” to
+          export.</span
+        >
+        <span class="muted">© Your Squad • For course submission</span>
+      </div>
+    </div>
+  </body>
+</html>
